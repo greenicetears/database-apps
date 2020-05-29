@@ -1,9 +1,8 @@
 package com.example.accessingdatajpa;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import java.util.List;
+
+import javax.persistence.*;
 
 @Entity
 public class Customer {
@@ -13,9 +12,11 @@ public class Customer {
   private Long id;
   private String firstName;
   private String lastName;
-
+  
+  @OneToMany
+  private List<Account> account;
+  
   protected Customer() {}
-
   public Customer(String firstName, String lastName) {
     this.firstName = firstName;
     this.lastName = lastName;
