@@ -1,23 +1,21 @@
 package com.example.accessingdatajpa;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.*;
 
-@Entity
-public class Customer {
 
-  @Id
-  @GeneratedValue(strategy=GenerationType.AUTO)
+public class CustomerDto {
+
   private Long id;
   private String firstName;
   private String lastName;
   
-  @OneToMany
-  private List<Account> account;
+  private List<AccountDto> account = new ArrayList<AccountDto>();
   
-  protected Customer() {}
-  public Customer(String firstName, String lastName) {
+  protected CustomerDto() {}
+  public CustomerDto(String firstName, String lastName) {
     this.firstName = firstName;
     this.lastName = lastName;
   }
@@ -40,8 +38,14 @@ public class Customer {
   public String getLastName() {
     return lastName;
   }
-public List<Account> getAccount() {
-	
-	return this.account;
+public List<AccountDto> getAccount() {
+	return account;
 }
+public void setAccount(List<AccountDto> account) {
+	this.account = account;
+}
+public void setFirstName(String string) {
+	this.firstName = string;
+}
+
 }
